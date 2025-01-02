@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="home bg-zinc-900 min-h-screen w-full flex p-10 flex-col">
+    <div class="nav w-full h-[7vh] flex justify-between text-white">
+      <span class="text-semibold flex justify-center items-center gap-5">
+        <div class="h-[50px] w-[50px] rounded overflow-hidden"> 
+          <img src="./images/upload/<%= Cuser.img  %>" alt="xyz">
+        </div>
+        Hello <%= Cuser.name %></span>
+      <div class="flex justify-center items-center">
+        <a href="/logout" class=""><button class="rounded-xl bg-zinc-800 hover:bg-black hover:text-red-600  text-gray-50 transition duration-200 rounded text-red-600 w-[100px] h-[40px]">Logout</button></a>
+      </div>
+    </div>
+
+    <div class="create h-[30vh] w-full mt-10">
+      <form action="/createpost" method="post">
+        <textarea name="content" id="" class="w-full lg:w-[40%] h-[20vh] resize-none p-3 text-zinc-300 bg-zinc-800 outline-none block border border-[1px] border-zinc-700 rounded" placeholder="Whats on your mind "></textarea>
+        <button type="submit" class=" block p-2 mt-5 rounded-lg bg-blue-600 text-zinc-300 w-[100px] transition duration-[400ms] ease-in hover:text-green-300 hover:bg-black">Post it</button>
+      </form>
+    </div>
+    <div class="Yourposts min-h-[40vh] h-fit felx flex-wrap flex-col p-2 mt-10">
+      <h2 class="text-zinc-400 text-xl mb-5">
+        Your Posts
+      </h2>
+      <% Cuser.posts.reverse().forEach(post => { %>
+      <div class="post w-full lg:w-[40%]  min-h-[20vh] text-zinc-300 bg-zinc-800 outline-none border border-[1px] border-zinc-700 rounded mt-2 relative px-3">
+        <p class="mb-2 text-blue-600">@<%= Cuser.username %></p>
+        <p class="text-white pb-10"><%= post.content %></p>
+        <div class="flex w-full mt-4 justify-between absolute bottom-0 left-0 p-3">
+          <div>
+            <%=post.like.length%>
+          </div>
+          <div class="flex gap-4  ">
+            <a href="like/<%=post._id%>">
+              <p class="text-green-600">
+                <% if(post.like.includes(Cuser._id)){ %>
+                UnLike
+                <% }else{ %>
+                like
+                <% } %>
+              </p>
+            </a>
+            <a href="delete/<%=post._id%>"><p class="text-red-600">Delete</p></a>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+
+</html>

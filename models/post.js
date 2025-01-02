@@ -1,14 +1,20 @@
-const { default: mongoose } = require("mongoose");
+const mongoose  = require("mongoose");
 
-const postSchemachema = mongoose.Schema({
+const postSchema = mongoose.Schema({
     userid:{
         type:mongoose.Schema.Types.ObjectId, ref:"user"
     },
     content:String,
+    like:[{
+
+        type:mongoose.Schema.Types.ObjectId, ref:"user"
+    }
+    ],
     date:{
-        date:Date,
+        type:Date,
         default:Date.now()
     }
+
 
 });
 module.exports = mongoose.model('post',postSchema)

@@ -10,17 +10,19 @@
 
 <body>
   <div class="main h-screen w-full p-4 bg-zinc-900 text-zinc-400 flex flex-col justify-center items-center">
-    <form action="/create" method="post" class="flex flex-col gap-4">
-      <h1 class="text-3xl text-center">Signup</h1>
-      <input name="name" type="text" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="name">
-      <input name="username" type="text" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="name">
-      <input name="age" type="number" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="age">
-      <input name="email" type="email" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="email">
-      <input name="password" type="password" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="password">
+    <form action="/loginUser" method="post" class="flex flex-col gap-4">
+      <h1 class="text-3xl text-center">Log In</h1>
+      <input name="email" type="email" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="email" required>
+      <input name="password" type="password" class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[300px]" placeholder="password" required>
       <div class="flex items-center justify-center">
-        <button class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[100px]" type="submit">Sign up</button>
+        <button class="p-3 bg-zinc-800 text-white rounded-lg outline-none w-[100px]" type="submit">Login</button>
       </div>
     </form>
+    <div class="flex items-center justify-center">
+
+      <a href="/"><button class="p-3 mt-5 bg-blue-600 text-white rounded-lg outline-none w-[100px]">Signup</button></a>
+    </div>
   </div>
 </body>
+
 </html>
